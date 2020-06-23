@@ -15,9 +15,9 @@ public class Main {
     
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Sorting algorithms!");
         
-        int[] myIntArray = new int[]{1, 2,100, 5, 3};
+        int[] myIntArray = new int[]{1, 2,100, 5, 250, -3, 275, -30, 3};
   
      
         // Printing elements one by one 
@@ -26,9 +26,11 @@ public class Main {
             System.out.print(myIntArray[i] + " ");
         }
         
+        System.out.print("\n");
+        
         int calculated_biggest = find_biggest(myIntArray);
         
-        System.out.println("\nThe biggest value is " + calculated_biggest);
+        System.out.println("The biggest value is " + calculated_biggest);
         
         
         int calculated_smallest = find_smallest(myIntArray);
@@ -43,6 +45,7 @@ public class Main {
             int current_value = yourArray[i];
             if (current_value > biggest) {
                 biggest = current_value;
+                //System.out.println("assining new biggest: " + biggest);
             }
         }
         return biggest;
@@ -54,8 +57,10 @@ public class Main {
 
         for (int i = 0; i < yourArray.length; i++ ) {
             int current_value = yourArray[i];
-            if (current_value < smallest)
+            if (current_value < smallest) {
                 smallest = current_value;
+                //System.out.println("assigning new smallest: " + smallest);
+            }
            
         }
 
