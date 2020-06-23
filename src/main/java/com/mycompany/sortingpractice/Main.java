@@ -36,7 +36,11 @@ public class Main {
         int calculated_smallest = find_smallest(myIntArray);
 
         System.out.println("The smallest value is " + calculated_smallest);
-    }
+        
+        int found_index_ex1 = sequentialSearch(275, myIntArray);
+        
+        System.out.println("Found index of value at " + found_index_ex1);
+   }
     
     public static int find_biggest(int[] yourArray)
     {
@@ -67,7 +71,18 @@ public class Main {
 
         return smallest;
     }
+    
+    public static int sequentialSearch(int item, int[] list) {
 
-        
-       
+        int index = -1;
+
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == item) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    }
 }
