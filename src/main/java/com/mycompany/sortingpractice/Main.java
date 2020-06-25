@@ -5,8 +5,7 @@
  */
 package com.mycompany.sortingpractice;
 
-import java.util.List;
-import java.util.ArrayList;
+
 /**
  *
  * @author haramerik
@@ -17,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Sorting algorithms!");
         
-        int[] myIntArray = new int[]{1, 2,100, 5, 250, -3, 275, -30, 3};
+        int[] myIntArray = new int[]{1, 2,100, 5, 250, -3, 275, -30, 1000};
   
      
         // Printing elements one by one 
@@ -39,7 +38,13 @@ public class Main {
         
         int found_index_ex1 = sequentialSearch(275, myIntArray);
         
-        System.out.println("Found index of value at " + found_index_ex1);
+        System.out.println("Seq search Found index of value at " + found_index_ex1);
+        
+        found_index_ex1 = binarySearch(1000, myIntArray);
+        
+        System.out.println("binarySearh Found index of value at " + found_index_ex1);
+        
+        
    }
     
     public static int find_biggest(int[] yourArray)
@@ -57,21 +62,19 @@ public class Main {
     
     public static int find_smallest(int[] yourArray) {
         int smallest = yourArray[0];
-        
 
-        for (int i = 0; i < yourArray.length; i++ ) {
+        for (int i = 0; i < yourArray.length; i++) {
             int current_value = yourArray[i];
             if (current_value < smallest) {
                 smallest = current_value;
                 //System.out.println("assigning new smallest: " + smallest);
             }
-           
-        }
 
+        }
 
         return smallest;
     }
-    
+
     public static int sequentialSearch(int item, int[] list) {
 
         int index = -1;
@@ -81,6 +84,37 @@ public class Main {
                 index = i;
                 break;
             }
+        }
+
+        return index;
+    }
+
+    //binary search requires list to be sorted
+    public static int binarySearch(int item, int[] list) {
+// if we did not find the search term the index will be -1
+        int index = -1;
+        // once you set the starting and ending indexes in the array
+        // the following code will change as we narrow our search
+        int low = 0;
+        int high = list.length - 1;
+        int mid;
+// Stop searching for the search term when our high and low markers cross
+        while (high >= low) {
+
+            mid = (high + low) / 2;// then you want to calculate the midpoint
+            // of your array
+            if (item < list[mid]) {
+                //the value will be in the lower half, if at all
+
+                high = mid - 1;
+            } else if (item > list[mid]) {
+                low = mid + 1;
+            } else {
+                //Now that you found it break out of the loop
+                index = mid;
+                break;
+            }
+
         }
 
         return index;
