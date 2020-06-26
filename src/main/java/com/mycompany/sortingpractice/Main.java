@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package com.mycompany.sortingpractice;
-
+import java.util.Scanner;
+import java.io.Console;
 
 /**
  *
@@ -15,35 +16,57 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Sorting algorithms!");
+
+        Scanner input = new Scanner(System.in);
         
-        int[] myIntArray = new int[]{1, 2,100, 5, 250, -3, 275, -30, 1000};
-  
+        System.out.println("Enter the number of items in array: ");
+
+        // Create a new array. The user enters the size
+        int[] array = new int[input.nextInt()];
+
+        System.out.println("Now enter items: ");
+
+        // Get the value of each element in the array
+        for (int i = 0; i < array.length; i++) {
+            array[i] = input.nextInt();
+        }
+
+        /* Note that the user can type the following:
+         * 6
+         * 34 12 7 4 22 15
+         * This will set the array to size 6
+         * array[0] = 34;
+         * array[1] = 12;
+         * etc.
+         */
+   
      
         // Printing elements one by one 
-        for (int i = 0; i < myIntArray.length; i++) 
+        for (int i = 0; i < array.length; i++) 
         {
-            System.out.print(myIntArray[i] + " ");
+            System.out.print(array[i] + " ");
         }
         
         System.out.print("\n");
         
-        int calculated_biggest = find_biggest(myIntArray);
+        int calculated_biggest = find_biggest(array);
         
         System.out.println("The biggest value is " + calculated_biggest);
         
-        
-        int calculated_smallest = find_smallest(myIntArray);
+        int calculated_smallest = find_smallest(array);
 
         System.out.println("The smallest value is " + calculated_smallest);
         
-        int found_index_ex1 = sequentialSearch(275, myIntArray);
+        System.out.println("Provide an integer to search:");
         
-        System.out.println("Seq search Found index of value at " + found_index_ex1);
+        int search_value = input.nextInt();
+        int found_index_ex1 = sequentialSearch(search_value, array);
         
-        found_index_ex1 = binarySearch(1000, myIntArray);
+        System.out.println("Seq search Found " + search_value + " at index " + found_index_ex1);
         
-        System.out.println("binarySearh Found index of value at " + found_index_ex1);
+        found_index_ex1 = binarySearch(search_value, array);
         
+        System.out.println("binarysearch Found " + search_value + " at index " + found_index_ex1);
         
    }
     
