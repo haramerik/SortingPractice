@@ -13,6 +13,8 @@ import java.io.Console;
  */
 public class Main {
     
+  
+    
 
     public static void main(String[] args) {
         System.out.println("Sorting algorithms!");
@@ -30,7 +32,7 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             array[i] = input.nextInt();
         }
-
+            
         /* Note that the user can type the following:
          * 6
          * 34 12 7 4 22 15
@@ -43,6 +45,7 @@ public class Main {
      
         // Printing elements one by one 
         for (int i = 0; i < array.length; i++) 
+            
         {
             System.out.print(array[i] + " ");
         }
@@ -67,6 +70,13 @@ public class Main {
         found_index_ex1 = binarySearch(search_value, array);
         
         System.out.println("binarysearch Found " + search_value + " at index " + found_index_ex1);
+        
+        System.out.println("sorting list with selection sort");
+        
+        selectionSort(array);
+        
+        printList(array);
+        
         
    }
     
@@ -142,4 +152,42 @@ public class Main {
 
         return index;
     }
+
+    public static void selectionSort(int[] list) {
+        int minIndex; // index of current minimum item in array
+        boolean newMinFound = false; // indicates if we need to swap
+        // items or not on this pass
+
+        for (int i = 0; i < list.length - 1; i++) {
+            minIndex = i;
+            for (int j = i + 1; j < list.length; j++) {
+                if (list[j] < list[i]) {
+                    // new minimum found, update minIndex
+                    minIndex = j;
+                    newMinFound = true;
+                }
+            }
+            if (newMinFound){
+                swap(list,i,minIndex);
+            }
+            newMinFound = false;
+        }
+    }   
+    
+    public static void swap(int[] list, int index1, int index2) {
+        int temp = list[index1];
+        
+        list[index1] = list[index2];
+        
+        list[index2] = temp;
+    }
+    
+    public static void printList(int[] list) {
+        for(int i = 0; i < list.length; i++) {
+            System.out.print(" " + list[i]);
+        }
+        System.out.print("\n");
+    }
 }
+
+
